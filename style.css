@@ -1,0 +1,232 @@
+/* styling header */
+header {
+  padding: 10px;
+  text-align: center;
+  background: #1a374d;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+  color: white;
+  font-family: "Trebuchet MS";
+}
+/* styling visualization area */
+.visualization {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  font-family: "Trebuchet MS";
+  display: flex;
+  justify-content: center;
+}
+/* styling svg drawspace */
+#drawspace {
+  margin: "10px";
+  background-color: white;
+}
+/* styling labels for drpodown */
+label {
+  color: black;
+  padding: 5px;
+}
+/* styling body of page */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+/* styling problem statement*/
+.problem_statement {
+  margin: 0em 3em 1em 3em;
+  font-family: "Trebuchet MS";
+}
+/* styling footer of page*/
+.footer {
+  background-color: #b1d0e0;
+  padding: 15px 0 10px;
+  font-size: 15px;
+  box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.5);
+  font-family: "Trebuchet MS";
+  line-height: 25px;
+  color: #363636;
+  display: flex;
+  justify-content: space-evenly;
+}
+/* styling details in footer*/
+.details {
+  padding-left: 0;
+  list-style: none;
+}
+/* styling header used in footer */
+.footer h6 {
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* styling dropdown div */
+.box {
+  margin-bottom: 20px;
+}
+/* styling each dropdown*/
+.box select {
+  background-color: white;
+  color: black;
+  padding: 12px;
+  margin-top: 10px;
+  width: 250px;
+  border: none;
+  font-size: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+}
+
+.box select option {
+  padding: 30px;
+}
+
+.tools {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+/* styling statespace of linechart */
+
+#canvas1 {
+  float: left;
+  margin: 10px;
+}
+
+#canvas2 {
+  float: left;
+  margin: 10px;
+}
+
+#canvas3 {
+  float: left;
+  margin: 10px;
+}
+
+#canvas4 {
+  float: left;
+  margin: 10px;
+}
+
+#canvas5 {
+  float: left;
+  margin: 10px;
+}
+
+#canvas6 {
+  float: left;
+  margin: 10px;
+}
+
+/* styling loader div*/
+#loading-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+/* styling loader*/
+#loader {
+  position: relative;
+  top: 50px;
+  left: -25px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 50%;
+  color: #000000;
+}
+/* styling circles in loader*/
+.circle {
+  display: inline-block;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #000000;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+/* styling left circle in loader */
+.left-circle {
+  animation-name: left-circle;
+  animation-timing-function: ease-in;
+}
+@keyframes left-circle {
+  0% {
+    top: 0;
+  }
+  50% {
+    top: 50px;
+  }
+  60% {
+    transform: scale(1.15);
+    background-color: rgb(199, 233, 192);
+    opacity: 0.1;
+  }
+  100% {
+    top: 0px;
+  }
+}
+/* styling middle circle in loader*/
+.middle-circle {
+  animation-name: middle-circle;
+  animation-timing-function: linear;
+}
+
+@keyframes middle-circle {
+  0% {
+    top: 0;
+  }
+  50% {
+    top: 50px;
+    transform: scale(1.2);
+    opacity: 0.1;
+  }
+  70% {
+    background-color: #09e8e4;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+/* styling right circle in loader*/
+.right-circle {
+  animation-name: right-circle;
+  animation-timing-function: ease-out;
+}
+
+@keyframes right-circle {
+  0% {
+    top: 0;
+  }
+  50% {
+    top: 50px;
+    transform: scale(1.2);
+    background-color: #09e8e4;
+    opacity: 0.1;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+.additional {
+  display: flex;
+}
+
+.additional1 {
+  display: flex;
+}
+
+.additional2 {
+  display: flex;
+}
+
+main {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
