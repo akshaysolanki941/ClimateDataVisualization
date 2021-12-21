@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Efficiency of Crop Production in India</title>
+    <title>Changi Climate Station Data Visualization</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -16,6 +16,12 @@
       </p>
     </header>
     <main>
+      <div class="description">
+        <p id="tooltip">
+          This area chart shows the amount of total rainfall in each of the 40 years (1982-2021). Click on the data 
+          point of a year to visualize it's detailed climate data below this area chart.
+        </p>
+      </div>
       <div class="visualization">
         <div id="loading-container">
           <div class="shapes-container">
@@ -29,37 +35,19 @@
         <div>
           <svg id="drawspace" height="700" width="1500"></svg>
         </div>
-
-        <!-- <div class="tools">
-          <div class="box">
-            <label for="year">Select Year:</label>
-            <select id="year" name="year" onchange="change()"></select>
-          </div>
-
-          <div class="box">
-            <label for="data">Select Data:</label>
-            <select id="data" name="data" onchange="change()"></select>
-          </div>
-
-          <div class="box">
-            <label for="chart">Select Chart Type:</label>
-            <select id="chart" name="chart" onchange="change()"></select>
-          </div>
-
-          <p id="tooltip">Hover on the bars.</p> -->
         </div>
       </div>
       <div class="additional">
-        <div id="canvas1"></div>
-        <div id="canvas2"></div>
+        <div id="canvas1" style="border: thin solid black; border-radius: 10px"></div>
+        <div id="canvas2" style="border: thin solid black; border-radius: 10px"></div>
       </div>
       <div class="additional1">
-        <div id="canvas3"></div>
-        <div id="canvas4"></div>
+        <div id="canvas3" style="border: thin solid black; border-radius: 10px"></div>
+        <div id="canvas4" style="border: thin solid black; border-radius: 10px"></div>
       </div>
       <div class="additional2">
-        <div id="canvas5"></div>
-        <div id="canvas6"></div>
+        <div id="canvas5" style="border: thin solid black; border-radius: 10px"></div>
+        <div id="canvas6" style="border: thin solid black; border-radius: 10px"></div>
       </div>
     </main>
     <footer class="footer">
@@ -84,7 +72,6 @@
     </footer>
 
     <script src="d3.js"></script>
-    <script src="legend.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

@@ -1,4 +1,3 @@
-/* styling header */
 header {
   padding: 10px;
   text-align: center;
@@ -7,7 +6,7 @@ header {
   color: white;
   font-family: "Trebuchet MS";
 }
-/* styling visualization area */
+
 .visualization {
   margin: auto;
   width: 50%;
@@ -16,28 +15,28 @@ header {
   display: flex;
   justify-content: center;
 }
-/* styling svg drawspace */
+
 #drawspace {
   margin: "10px";
   background-color: white;
 }
-/* styling labels for drpodown */
+
 label {
   color: black;
   padding: 5px;
 }
-/* styling body of page */
+
 body {
   margin: 0;
   padding: 0;
   background-color: white;
 }
-/* styling problem statement*/
+
 .problem_statement {
   margin: 0em 3em 1em 3em;
   font-family: "Trebuchet MS";
 }
-/* styling footer of page*/
+
 .footer {
   background-color: #b1d0e0;
   padding: 15px 0 10px;
@@ -49,47 +48,31 @@ body {
   display: flex;
   justify-content: space-evenly;
 }
-/* styling details in footer*/
+
 .details {
   padding-left: 0;
   list-style: none;
 }
-/* styling header used in footer */
+
 .footer h6 {
   font-size: 14px;
   text-transform: uppercase;
   margin-top: 2px;
 }
 
-/* styling dropdown div */
-.box {
-  margin-bottom: 20px;
-}
-/* styling each dropdown*/
-.box select {
-  background-color: white;
-  color: black;
-  padding: 12px;
-  margin-top: 10px;
-  width: 250px;
-  border: none;
-  font-size: 20px;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
-  -webkit-appearance: button;
-  appearance: button;
-  outline: none;
+.description {
+  text-align: center;
+  padding: 10px;
 }
 
-.box select option {
-  padding: 30px;
+#tooltip {
+  position: relative;
+  top: 10px;
+  letter-spacing: 1px;
+  font-size: 25px;
+  color: #000000;
+  font-weight: bold;
 }
-
-.tools {
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
-/* styling statespace of linechart */
 
 #canvas1 {
   float: left;
@@ -121,14 +104,13 @@ body {
   margin: 10px;
 }
 
-/* styling loader div*/
 #loading-container {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
-/* styling loader*/
+
 #loader {
   position: relative;
   top: 50px;
@@ -138,7 +120,7 @@ body {
   font-size: 50%;
   color: #000000;
 }
-/* styling circles in loader*/
+
 .circle {
   display: inline-block;
   position: relative;
@@ -149,7 +131,7 @@ body {
   animation-duration: 2s;
   animation-iteration-count: infinite;
 }
-/* styling left circle in loader */
+
 .left-circle {
   animation-name: left-circle;
   animation-timing-function: ease-in;
@@ -170,7 +152,7 @@ body {
     top: 0px;
   }
 }
-/* styling middle circle in loader*/
+
 .middle-circle {
   animation-name: middle-circle;
   animation-timing-function: linear;
@@ -193,7 +175,6 @@ body {
   }
 }
 
-/* styling right circle in loader*/
 .right-circle {
   animation-name: right-circle;
   animation-timing-function: ease-out;
