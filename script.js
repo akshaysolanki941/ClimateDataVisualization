@@ -257,91 +257,113 @@ function no_of_rainy_days(monthWiseData, year) {
 
   d3.select("#canvas2").select("svg").remove();
 
+  var xScale = d3
+    .scalePoint()
+    .range([0, width])
+    .domain(monthWiseData.map((d) => d.month));
+
+  var yScale = d3
+    .scaleLinear()
+    .domain([0, d3.max(monthWiseData, (d) => +d.no_of_rainy_days)])
+    .range([height, 0]);
+
   var svg = d3
     .select("#canvas2")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom);
-
-  let colorScale = d3.scaleOrdinal(d3.schemePaired);
-  let radius = Math.min(width, height) / 2;
-
-  let pie = d3.pie().value((d) => d.no_of_rainy_days);
-  let arc = d3
-    .arc()
-    .outerRadius(radius)
-    .innerRadius(radius * 0.2)
-    .padAngle(0.05)
-    .cornerRadius(5);
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   svg
     .append("g")
-    .selectAll("mydots")
+    .attr("class", "grid")
+    .style("opacity", "0.3")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(xScale).ticks(5).tickSize(-height).tickFormat(""));
+
+  svg
+    .append("g")
+    .attr("class", "grid")
+    .style("opacity", "0.3")
+    .call(d3.axisLeft(yScale).ticks(5).tickSize(-width).tickFormat(""));
+
+  svg
+    .append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(xScale));
+
+  svg
+    .append("text")
+    .attr(
+      "transform",
+      "translate(" + width / 2 + " ," + (height + margin.top + 20) + ")"
+    )
+    .style("text-anchor", "middle")
+    .text("Months of year " + year);
+
+  var axisleft = d3.axisLeft(yScale);
+  axisleft.ticks(15);
+  svg.append("g").call(axisleft);
+
+  svg
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - margin.left)
+    .attr("x", 0 - height / 2)
+    .attr("dy", "1em")
+    .style("text-anchor", "middle")
+    .text("Number of rainy days in the month");
+
+  var path = svg
+    .append("path")
+    .datum(monthWiseData)
+    .attr("fill", "none")
+    .style("opacity", "1")
+    .attr("stroke", "#F3950D")
+    .attr("stroke-width", 4)
+    .attr(
+      "d",
+      d3
+        .line()
+        .x((d) => xScale(d.month))
+        .y((d) => yScale(d.no_of_rainy_days))
+    );
+
+  var totalLength = path.node().getTotalLength();
+  path
+    .attr("stroke-dasharray", totalLength + " " + totalLength)
+    .attr("stroke-dashoffset", totalLength)
+    .transition()
+    .duration(4000)
+    .ease(d3.easeLinear)
+    .attr("stroke-dashoffset", 0);
+
+  svg
+    .selectAll("circle")
     .data(monthWiseData)
     .enter()
     .append("circle")
-    .attr("cx", 100)
-    .attr("cy", function (d, i) {
-      return 50 + i * 25;
-    })
-    .attr("r", 7)
-    .style("fill", function (d) {
-      return colorScale(d.month);
-    });
-
-  svg
-    .append("g")
-    .selectAll("mylabels")
-    .data(monthWiseData)
-    .enter()
-    .append("text")
-    .attr("x", 120)
-    .attr("y", function (d, i) {
-      return 50 + i * 25;
-    })
-    .text((d) => d.month)
-    .attr("text-anchor", "left")
-    .style("alignment-baseline", "middle");
-
-  svg
-    .append("g")
-    .attr(
-      "transform",
-      "translate(" + (width / 2 + 100) + "," + (height / 2 + 100) + ")"
-    )
-    .selectAll("arc")
-    .data(pie(monthWiseData))
-    .enter()
-    .append("g")
-    .append("path")
-    .attr("class", "arc1")
-    .attr("d", arc)
-    .attr("fill", (d) => colorScale(d.data.month))
+    .attr("class", "circle1")
+    .attr("r", 3.5)
+    .attr("cx", (d) => xScale(d.month))
+    .attr("cy", (d) => yScale(d.no_of_rainy_days))
     .on("mouseenter", function () {
-      d3.selectAll(".arc1").attr("opacity", 0.2);
-      d3.select(this).attr("opacity", 1);
+      d3.selectAll(".circle1").attr("opacity", 0);
+      d3.select(this).attr("opacity", 1).attr("r", 8);
     })
     .on("mouseout", function () {
-      d3.selectAll(".arc1").attr("opacity", 1);
+      d3.selectAll(".circle1").attr("opacity", 1).attr("r", 3.5);
     })
     .append("title")
     .text(
       (d) =>
         "Number of rainy days in the month " +
-        d.data.month +
+        d.month +
         " was " +
-        d.data.no_of_rainy_days +
+        d.no_of_rainy_days +
         " days."
     );
-
-  svg
-    .append("text")
-    .attr(
-      "transform",
-      "translate(" + (width / 2 + 100) + " ," + (height + margin.top + 80) + ")"
-    )
-    .style("text-anchor", "middle")
-    .text("Number of rainy days in a month");
 }
 
 function total_rainfall(monthWiseData, year) {
@@ -561,87 +583,83 @@ function mean_rh(monthWiseData, year) {
     .select("#canvas5")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom);
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  let colorScale = d3.scaleOrdinal(d3.schemeSet3);
-  let radius = Math.min(width, height) / 2;
-
-  let pie = d3.pie().value((d) => d.mean_rh);
-  let arc = d3
-    .arc()
-    .outerRadius(radius)
-    .innerRadius(radius * 0.2)
-    .padAngle(0.05)
-    .cornerRadius(5);
+  var xScale = d3
+    .scaleBand()
+    .range([0, width])
+    .domain(monthWiseData.map((d) => d.month))
+    .padding(0.2);
 
   svg
-    .append("g")
-    .selectAll("mydots")
-    .data(monthWiseData)
-    .enter()
-    .append("circle")
-    .attr("cx", 100)
-    .attr("cy", function (d, i) {
-      return 50 + i * 25;
-    })
-    .attr("r", 7)
-    .style("fill", function (d) {
-      return colorScale(d.month);
-    });
-
-  svg
-    .append("g")
-    .selectAll("mylabels")
-    .data(monthWiseData)
-    .enter()
     .append("text")
-    .attr("x", 120)
-    .attr("y", function (d, i) {
-      return 50 + i * 25;
-    })
-    .text((d) => d.month)
-    .attr("text-anchor", "left")
-    .style("alignment-baseline", "middle");
-
-  svg
-    .append("g")
     .attr(
       "transform",
-      "translate(" + (width / 2 + 100) + "," + (height / 2 + 100) + ")"
+      "translate(" + width / 2 + " ," + (height + margin.top + 20) + ")"
     )
-    .selectAll("arc")
-    .data(pie(monthWiseData))
-    .enter()
+    .style("text-anchor", "middle")
+    .text("Months of year " + year);
+
+  svg
     .append("g")
-    .append("path")
-    .attr("class", "arc2")
-    .attr("d", arc)
-    .attr("fill", (d) => colorScale(d.data.month))
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(xScale))
+    .selectAll("text")
+    .attr("transform", "translate(-10,0)rotate(-45)")
+    .style("text-anchor", "end");
+
+  var yScale = d3
+    .scaleLinear()
+    .domain([0, d3.max(monthWiseData, (d) => +d.mean_rh)])
+    .range([height, 0]);
+  svg.append("g").call(d3.axisLeft(yScale).ticks(15));
+
+  svg
+    .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - margin.left)
+    .attr("x", 0 - height / 2)
+    .attr("dy", "1em")
+    .style("text-anchor", "middle")
+    .text("Mean Relative Humidity");
+
+  svg
+    .selectAll("mybar")
+    .data(monthWiseData)
+    .enter()
+    .append("rect")
+    .attr("class", "bar1")
+    .attr("x", (d) => xScale(d.month))
+    .attr("width", xScale.bandwidth())
+    .attr("fill", "#7267CB")
     .on("mouseenter", function () {
-      d3.selectAll(".arc2").attr("opacity", 0.2);
-      d3.select(this).attr("opacity", 1);
+      d3.selectAll(".bar1").attr("opacity", 0.5);
+      d3.select(this).attr("fill", "#6E3CBC").attr("opacity", 1);
     })
     .on("mouseout", function () {
-      d3.selectAll(".arc2").attr("opacity", 1);
+      d3.selectAll(".bar1").attr("opacity", 1).attr("fill", "#7267CB");
     })
+    .attr("height", height - yScale(0))
+    .attr("y", yScale(0))
     .append("title")
     .text(
       (d) =>
-        "Mean Relative Humidity in the month " +
-        d.data.month +
+        "Mean relative humidity for the month " +
+        d.month +
         " was " +
-        d.data.mean_rh +
+        d.mean_rh +
         "%."
     );
 
   svg
-    .append("text")
-    .attr(
-      "transform",
-      "translate(" + (width / 2 + 100) + " ," + (height + margin.top + 80) + ")"
-    )
-    .style("text-anchor", "middle")
-    .text("Mean Relative Humidity in a month");
+    .selectAll("rect")
+    .transition()
+    .duration(800)
+    .attr("y", (d) => yScale(d.mean_rh))
+    .attr("height", (d) => height - yScale(d.mean_rh))
+    .delay((d, i) => i * 100);
 }
 
 function mean_sunshine_hrs(monthWiseData, year) {
