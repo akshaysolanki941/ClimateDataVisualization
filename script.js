@@ -152,16 +152,22 @@ function change() {
 }
 
 function monthWiseVisualization(monthWiseData, year) {
+  document.getElementById("chart_heading").innerHTML="Detailed climate data for the year "+ year;
   maximum_rainfall_in_a_day(monthWiseData, year);
   no_of_rainy_days(monthWiseData, year);
   total_rainfall(monthWiseData, year);
   rh_extremes_minimum(monthWiseData, year);
   mean_rh(monthWiseData, year);
   mean_sunshine_hrs(monthWiseData, year);
+  window.scrollBy({
+    top: 600,
+    left: 0,
+    behavior: 'smooth'
+  });
 }
 
 function maximum_rainfall_in_a_day(monthWiseData, year) {
-  var margin = { top: 40, right: 30, bottom: 150, left: 70 },
+  var margin = { top: 40, right: 30, bottom: 80, left: 70 },
     width = 700 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
@@ -169,6 +175,7 @@ function maximum_rainfall_in_a_day(monthWiseData, year) {
 
   var svg = d3
     .select("#canvas1")
+    .attr("style","border: thin solid black; border-radius: 10px")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -207,7 +214,7 @@ function maximum_rainfall_in_a_day(monthWiseData, year) {
   svg
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 0 - margin.left)
+    .attr("y", 0 - margin.left+15)
     .attr("x", 0 - height / 2)
     .attr("dy", "1em")
     .style("text-anchor", "middle")
@@ -251,7 +258,7 @@ function maximum_rainfall_in_a_day(monthWiseData, year) {
 }
 
 function no_of_rainy_days(monthWiseData, year) {
-  var margin = { top: 40, right: 30, bottom: 150, left: 70 },
+  var margin = { top: 40, right: 30, bottom: 80, left: 70 },
     width = 700 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
@@ -269,6 +276,7 @@ function no_of_rainy_days(monthWiseData, year) {
 
   var svg = d3
     .select("#canvas2")
+    .attr("style","border: thin solid black; border-radius: 10px")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -309,7 +317,7 @@ function no_of_rainy_days(monthWiseData, year) {
   svg
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 0 - margin.left)
+    .attr("y", 0 - margin.left+15)
     .attr("x", 0 - height / 2)
     .attr("dy", "1em")
     .style("text-anchor", "middle")
@@ -367,7 +375,7 @@ function no_of_rainy_days(monthWiseData, year) {
 }
 
 function total_rainfall(monthWiseData, year) {
-  var margin = { top: 40, right: 30, bottom: 150, left: 70 },
+  var margin = { top: 40, right: 30, bottom: 80, left: 70 },
     width = 700 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
@@ -385,6 +393,7 @@ function total_rainfall(monthWiseData, year) {
 
   var svg = d3
     .select("#canvas3")
+    .attr("style","border: thin solid black; border-radius: 10px")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -425,7 +434,7 @@ function total_rainfall(monthWiseData, year) {
   svg
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 0 - margin.left)
+    .attr("y", 0 - margin.left+15)
     .attr("x", 0 - height / 2)
     .attr("dy", "1em")
     .style("text-anchor", "middle")
@@ -483,7 +492,7 @@ function total_rainfall(monthWiseData, year) {
 }
 
 function rh_extremes_minimum(monthWiseData, year) {
-  var margin = { top: 40, right: 30, bottom: 150, left: 70 },
+  var margin = { top: 40, right: 30, bottom: 80, left: 70 },
     width = 700 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
@@ -491,6 +500,7 @@ function rh_extremes_minimum(monthWiseData, year) {
 
   var svg = d3
     .select("#canvas4")
+    .attr("style","border: thin solid black; border-radius: 10px")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -529,7 +539,7 @@ function rh_extremes_minimum(monthWiseData, year) {
   svg
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 0 - margin.left)
+    .attr("y", 0 - margin.left+15)
     .attr("x", 0 - height / 2)
     .attr("dy", "1em")
     .style("text-anchor", "middle")
@@ -573,7 +583,7 @@ function rh_extremes_minimum(monthWiseData, year) {
 }
 
 function mean_rh(monthWiseData, year) {
-  var margin = { top: 40, right: 30, bottom: 150, left: 70 },
+  var margin = { top: 40, right: 30, bottom: 80, left: 70 },
     width = 700 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
@@ -581,6 +591,7 @@ function mean_rh(monthWiseData, year) {
 
   var svg = d3
     .select("#canvas5")
+    .attr("style","border: thin solid black; border-radius: 10px")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -619,7 +630,7 @@ function mean_rh(monthWiseData, year) {
   svg
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 0 - margin.left)
+    .attr("y", 0 - margin.left+15)
     .attr("x", 0 - height / 2)
     .attr("dy", "1em")
     .style("text-anchor", "middle")
@@ -663,7 +674,7 @@ function mean_rh(monthWiseData, year) {
 }
 
 function mean_sunshine_hrs(monthWiseData, year) {
-  var margin = { top: 40, right: 30, bottom: 150, left: 70 },
+  var margin = { top: 40, right: 30, bottom: 80, left: 70 },
     width = 700 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
@@ -681,6 +692,7 @@ function mean_sunshine_hrs(monthWiseData, year) {
 
   var svg = d3
     .select("#canvas6")
+    .attr("style","border: thin solid black; border-radius: 10px")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -721,7 +733,7 @@ function mean_sunshine_hrs(monthWiseData, year) {
   svg
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 0 - margin.left)
+    .attr("y", 0 - margin.left+15)
     .attr("x", 0 - height / 2)
     .attr("dy", "1em")
     .style("text-anchor", "middle")

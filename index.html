@@ -1,77 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Changi Climate Station Data Visualization</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header>
-      <h1>Changi Climate Station Data</h1>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Changi Climate Station Data Visualization</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header>
+    <div class="header-left">
+      <p class="heading">Changi Climate Station Data</p>
 
       <p class="problem_statement">
         Visualization of different monthly climate data of over 40 years
         captured by Changi Climate Station.
       </p>
-    </header>
-    <main>
-      <div class="description">
-        <p id="tooltip">
-          This area chart shows the amount of total rainfall in each of the 40 years (1982-2021). Click on the data 
-          point of a year to visualize it's detailed climate data below this area chart.
-        </p>
-      </div>
-      <div class="visualization">
-        <div id="loading-container">
-          <div class="shapes-container">
-            <div class="circle left-circle"></div>
-            <div class="circle middle-circle"></div>
-            <div class="circle right-circle"></div>
-          </div>
-          <p id="loader">Please Wait Loading...</p>
-        </div>
-
-        <div>
-          <svg id="drawspace" height="700" width="1500"></svg>
-        </div>
-        </div>
-      </div>
-      <div class="additional">
-        <div id="canvas1" style="border: thin solid black; border-radius: 10px"></div>
-        <div id="canvas2" style="border: thin solid black; border-radius: 10px"></div>
-      </div>
-      <div class="additional1">
-        <div id="canvas3" style="border: thin solid black; border-radius: 10px"></div>
-        <div id="canvas4" style="border: thin solid black; border-radius: 10px"></div>
-      </div>
-      <div class="additional2">
-        <div id="canvas5" style="border: thin solid black; border-radius: 10px"></div>
-        <div id="canvas6" style="border: thin solid black; border-radius: 10px"></div>
-      </div>
-    </main>
-    <footer class="footer">
-      <div>
-        <h6>Submitted to:</h6>
-
+    </div>
+    <div class="header-right">
+      <div class="hr-1">
+        <p>Submitted to:</p>
         <ul class="details">
           <li>Dr. Subrat Dash</li>
           <li>Associate Professor</li>
           <li>CSE Department, LNMIIT</li>
         </ul>
       </div>
-
-      <div>
-        <h6>Submitted By:</h6>
+      <div class="hr-2">
+        <p>Submitted By:</p>
         <ul class="details">
           <li>Akshay Solanki (18ucs225)</li>
           <li>Shivam Mundhra (18ucs012)</li>
           <li>Atulya Singh (18ucs166)</li>
         </ul>
       </div>
-    </footer>
+    </div>
+  </header>
+  <main>
+    <div class="description">
+      <p id="tooltip">
+        This area chart shows the amount of total rainfall in each of the 40 years (1982-2021). <br /> Click on the data
+        point of a year to visualize it's detailed climate data below this area chart.
+      </p>
+    </div>
+    <div class="visualization">
+      <div id="loading-container">
+        <div class="spinner-4"></div>
+        <p id="loader">Please Wait Loading...</p>
+      </div>
 
-    <script src="d3.js"></script>
-    <script src="script.js"></script>
-  </body>
+      <div>
+        <svg id="drawspace" height="700" width="1500"></svg>
+      </div>
+    </div>
+    </div>
+    <div id="chart_heading"></div>
+    <div class="charts">
+      <div id="canvas1"></div>
+      <div id="canvas2"></div>
+      <div id="canvas3"></div>
+      <div id="canvas4"></div>
+      <div id="canvas5"></div>
+      <div id="canvas6"></div>
+    </div>
+  </main>
+
+  <script src="d3.js"></script>
+  <script src="script.js"></script>
+</body>
+
 </html>
