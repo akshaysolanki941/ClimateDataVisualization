@@ -11,12 +11,12 @@ function showData(my_data) {
 
   myData = [...my_data];
 
-  change();
+  visualize();
 
   document.getElementById("loading-container").style.display = "none";
 }
 
-function change() {
+function visualize() {
   let yearlyData = [];
   let yearRainfallMap = new Map();
 
@@ -152,17 +152,20 @@ function change() {
 }
 
 function monthWiseVisualization(monthWiseData, year) {
-  document.getElementById("chart_heading").innerHTML="Detailed climate data for the year "+ year;
+  document.getElementById("chart_heading").innerHTML =
+    "Detailed climate visualization for the year " + year;
+
   maximum_rainfall_in_a_day(monthWiseData, year);
   no_of_rainy_days(monthWiseData, year);
   total_rainfall(monthWiseData, year);
   rh_extremes_minimum(monthWiseData, year);
   mean_rh(monthWiseData, year);
   mean_sunshine_hrs(monthWiseData, year);
+
   window.scrollBy({
     top: 600,
     left: 0,
-    behavior: 'smooth'
+    behavior: "smooth",
   });
 }
 
@@ -175,10 +178,20 @@ function maximum_rainfall_in_a_day(monthWiseData, year) {
 
   var svg = d3
     .select("#canvas1")
-    .attr("style","border: thin solid black; border-radius: 10px")
+    .attr("style", "border: thin solid black; border-radius: 10px")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("height", height + margin.top + margin.bottom);
+
+  svg
+    .append("text")
+    .attr("transform", "translate(" + (width / 2 + margin.left) + ", 20)")
+    .style("text-anchor", "middle")
+    .attr("padding", "10px")
+    .attr("font-weight", "bold")
+    .text("Maximum Rainfall in a day (mm)");
+
+  svg = svg
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -214,7 +227,7 @@ function maximum_rainfall_in_a_day(monthWiseData, year) {
   svg
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 0 - margin.left+15)
+    .attr("y", 0 - margin.left + 15)
     .attr("x", 0 - height / 2)
     .attr("dy", "1em")
     .style("text-anchor", "middle")
@@ -276,10 +289,20 @@ function no_of_rainy_days(monthWiseData, year) {
 
   var svg = d3
     .select("#canvas2")
-    .attr("style","border: thin solid black; border-radius: 10px")
+    .attr("style", "border: thin solid black; border-radius: 10px")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("height", height + margin.top + margin.bottom);
+
+  svg
+    .append("text")
+    .attr("transform", "translate(" + (width / 2 + margin.left) + ", 20)")
+    .style("text-anchor", "middle")
+    .attr("padding", "10px")
+    .attr("font-weight", "bold")
+    .text("Number of rainy days in a month");
+
+  svg = svg
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -317,7 +340,7 @@ function no_of_rainy_days(monthWiseData, year) {
   svg
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 0 - margin.left+15)
+    .attr("y", 0 - margin.left + 15)
     .attr("x", 0 - height / 2)
     .attr("dy", "1em")
     .style("text-anchor", "middle")
@@ -352,16 +375,16 @@ function no_of_rainy_days(monthWiseData, year) {
     .data(monthWiseData)
     .enter()
     .append("circle")
-    .attr("class", "circle1")
+    .attr("class", "circle4")
     .attr("r", 3.5)
     .attr("cx", (d) => xScale(d.month))
     .attr("cy", (d) => yScale(d.no_of_rainy_days))
     .on("mouseenter", function () {
-      d3.selectAll(".circle1").attr("opacity", 0);
+      d3.selectAll(".circle4").attr("opacity", 0);
       d3.select(this).attr("opacity", 1).attr("r", 8);
     })
     .on("mouseout", function () {
-      d3.selectAll(".circle1").attr("opacity", 1).attr("r", 3.5);
+      d3.selectAll(".circle4").attr("opacity", 1).attr("r", 3.5);
     })
     .append("title")
     .text(
@@ -393,10 +416,20 @@ function total_rainfall(monthWiseData, year) {
 
   var svg = d3
     .select("#canvas3")
-    .attr("style","border: thin solid black; border-radius: 10px")
+    .attr("style", "border: thin solid black; border-radius: 10px")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("height", height + margin.top + margin.bottom);
+
+  svg
+    .append("text")
+    .attr("transform", "translate(" + (width / 2 + margin.left) + ", 20)")
+    .style("text-anchor", "middle")
+    .attr("padding", "10px")
+    .attr("font-weight", "bold")
+    .text("Total Rainfall in a month (mm)");
+
+  svg = svg
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -434,7 +467,7 @@ function total_rainfall(monthWiseData, year) {
   svg
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 0 - margin.left+15)
+    .attr("y", 0 - margin.left + 15)
     .attr("x", 0 - height / 2)
     .attr("dy", "1em")
     .style("text-anchor", "middle")
@@ -500,10 +533,20 @@ function rh_extremes_minimum(monthWiseData, year) {
 
   var svg = d3
     .select("#canvas4")
-    .attr("style","border: thin solid black; border-radius: 10px")
+    .attr("style", "border: thin solid black; border-radius: 10px")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("height", height + margin.top + margin.bottom);
+
+  svg
+    .append("text")
+    .attr("transform", "translate(" + (width / 2 + margin.left) + ", 20)")
+    .style("text-anchor", "middle")
+    .attr("padding", "10px")
+    .attr("font-weight", "bold")
+    .text("Minimum extreme of Relative Humidity (%)");
+
+  svg = svg
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -539,7 +582,7 @@ function rh_extremes_minimum(monthWiseData, year) {
   svg
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 0 - margin.left+15)
+    .attr("y", 0 - margin.left + 15)
     .attr("x", 0 - height / 2)
     .attr("dy", "1em")
     .style("text-anchor", "middle")
@@ -555,11 +598,11 @@ function rh_extremes_minimum(monthWiseData, year) {
     .attr("width", xScale.bandwidth())
     .attr("fill", "#B958A5")
     .on("mouseenter", function () {
-      d3.selectAll(".bar3").attr("opacity", 0.5);
-      d3.select(this).attr("fill", "#4C3F91").attr("opacity", 1);
+      d3.selectAll(".bar3").attr("opacity", 0.3);
+      d3.select(this).attr("opacity", 1);
     })
     .on("mouseout", function () {
-      d3.selectAll(".bar3").attr("opacity", 1).attr("fill", "#B958A5");
+      d3.selectAll(".bar3").attr("opacity", 1);
     })
     .attr("height", height - yScale(0))
     .attr("y", yScale(0))
@@ -591,10 +634,20 @@ function mean_rh(monthWiseData, year) {
 
   var svg = d3
     .select("#canvas5")
-    .attr("style","border: thin solid black; border-radius: 10px")
+    .attr("style", "border: thin solid black; border-radius: 10px")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("height", height + margin.top + margin.bottom);
+
+  svg
+    .append("text")
+    .attr("transform", "translate(" + (width / 2 + margin.left) + ", 20)")
+    .style("text-anchor", "middle")
+    .attr("padding", "10px")
+    .attr("font-weight", "bold")
+    .text("Mean Relative Humidity of a month (%)");
+
+  svg = svg
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -630,7 +683,7 @@ function mean_rh(monthWiseData, year) {
   svg
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 0 - margin.left+15)
+    .attr("y", 0 - margin.left + 15)
     .attr("x", 0 - height / 2)
     .attr("dy", "1em")
     .style("text-anchor", "middle")
@@ -692,10 +745,20 @@ function mean_sunshine_hrs(monthWiseData, year) {
 
   var svg = d3
     .select("#canvas6")
-    .attr("style","border: thin solid black; border-radius: 10px")
+    .attr("style", "border: thin solid black; border-radius: 10px")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("height", height + margin.top + margin.bottom);
+
+  svg
+    .append("text")
+    .attr("transform", "translate(" + (width / 2 + margin.left) + ", 20)")
+    .style("text-anchor", "middle")
+    .attr("padding", "10px")
+    .attr("font-weight", "bold")
+    .text("Mean Sunshine Hours of a month");
+
+  svg = svg
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -733,7 +796,7 @@ function mean_sunshine_hrs(monthWiseData, year) {
   svg
     .append("text")
     .attr("transform", "rotate(-90)")
-    .attr("y", 0 - margin.left+15)
+    .attr("y", 0 - margin.left + 15)
     .attr("x", 0 - height / 2)
     .attr("dy", "1em")
     .style("text-anchor", "middle")

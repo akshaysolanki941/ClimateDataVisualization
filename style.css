@@ -1,22 +1,18 @@
-html{
+html {
   font-family: Arial, Helvetica, sans-serif;
 }
 header {
   padding: 10px 40px;
-  /* background: #1a374d; */
-  /* box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3); */
   background: #212832;
   color: white;
   display: flex;
   justify-content: space-between;
-  /* align-items: flex-start; */
 }
 
-
-.problem_statement{
+.problem_statement {
   margin-top: 10px;
 }
-.header-right{
+.header-right {
   display: flex;
   width: 30%;
   justify-content: space-between;
@@ -24,14 +20,13 @@ header {
   align-items: center;
 }
 
-.header-right p{
+.header-right p {
   margin: 0;
   font-size: 16px;
   font-weight: bold;
-  /* margin-bottom: 5px; */
 }
 
-.heading{
+.heading {
   font-size: 28px;
   font-weight: bold;
   margin: 20px 0 0 0;
@@ -44,7 +39,7 @@ header {
   justify-content: center;
 }
 
-#chart_heading{
+#chart_heading {
   text-align: center;
   font-size: 28px;
   font-weight: bold;
@@ -67,16 +62,11 @@ body {
   background-color: white;
 }
 
-
-
-
 .details {
   padding-left: 0;
   list-style: none;
   margin: 0;
 }
-
-
 
 .description {
   text-align: center;
@@ -140,30 +130,33 @@ body {
 }
 
 .spinner-4 {
-  width:50px;
-  height:50px;
-  border-radius:50%;
-  padding:1px;
-  background:conic-gradient(#0000 10%,#f03355) content-box;
-  -webkit-mask:
-    repeating-conic-gradient(#0000 0deg,#000 1deg 20deg,#0000 21deg 36deg),
-    radial-gradient(farthest-side,#0000 calc(100% - 9px),#000 calc(100% - 8px));
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 1px;
+  background: conic-gradient(#0000 10%, #f03355) content-box;
+  -webkit-mask: repeating-conic-gradient(
+      #0000 0deg,
+      #000 1deg 20deg,
+      #0000 21deg 36deg
+    ),
+    radial-gradient(
+      farthest-side,
+      #0000 calc(100% - 9px),
+      #000 calc(100% - 8px)
+    );
   -webkit-mask-composite: destination-in;
   mask-composite: intersect;
-  animation:s4 1s infinite steps(10);
+  animation: s4 1s infinite steps(10);
 }
-@keyframes s4 {to{transform: rotate(1turn)}}
+@keyframes s4 {
+  to {
+    transform: rotate(1turn);
+  }
+}
 
-
-
-.charts{
+.charts {
   display: flex;
-  flex-wrap:wrap;
-  /* align-items: center; */
+  flex-wrap: wrap;
   justify-content: center;
 }
-/* 
-main {
-  margin-top: 1em;
-  margin-bottom: 1em;
-} */
