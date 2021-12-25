@@ -8,8 +8,8 @@ CSE Department, LNMIIT
 
 ### Submitted by:
 
-Akshay Solanki (18ucs225)
-Shivam Mundhra (18ucs012)
+Akshay Solanki (18ucs225)  
+Shivam Mundhra (18ucs012)  
 Atulya Singh (18ucs166)
 
 ## Visualization link:
