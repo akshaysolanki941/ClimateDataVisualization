@@ -698,16 +698,16 @@ function mean_rh(monthWiseData, year) {
     .data(monthWiseData)
     .enter()
     .append("rect")
-    .attr("class", "bar1")
+    .attr("class", "bar2")
     .attr("x", (d) => xScale(d.month))
     .attr("width", xScale.bandwidth())
     .attr("fill", "#7267CB")
     .on("mouseenter", function () {
-      d3.selectAll(".bar1").attr("opacity", 0.5);
+      d3.selectAll(".bar2").attr("opacity", 0.5);
       d3.select(this).attr("fill", "#6E3CBC").attr("opacity", 1);
     })
     .on("mouseout", function () {
-      d3.selectAll(".bar1").attr("opacity", 1).attr("fill", "#7267CB");
+      d3.selectAll(".bar2").attr("opacity", 1).attr("fill", "#7267CB");
     })
     .attr("height", height - yScale(0))
     .attr("y", yScale(0))
