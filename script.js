@@ -152,8 +152,12 @@ function visualize() {
 }
 
 function monthWiseVisualization(monthWiseData, year) {
-  document.getElementById("chart_heading").innerHTML =
+  let chartEl=document.querySelector(".charts")
+  chartEl.style.display="flex"
+  let chartHeadingEl = document.getElementById("chart_heading")
+  chartHeadingEl.innerHTML =
     "Detailed climate visualization for the year " + year;
+  chartHeadingEl.style.display="block"
 
   maximum_rainfall_in_a_day(monthWiseData, year);
   no_of_rainy_days(monthWiseData, year);

@@ -3,7 +3,8 @@ html {
 }
 header {
   padding: 10px 40px;
-  background: #212832;
+  /* background: #212832; */
+  background-color: #2F5D62;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -44,6 +45,7 @@ header {
   font-size: 28px;
   font-weight: bold;
   margin-bottom: 20px;
+  display: none;
 }
 
 #drawspace {
@@ -159,4 +161,32 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 50px;
+  display: none;
+}
+
+.footer{
+  display: flex;
+  justify-content: space-evenly;
+  height: 100px;
+  /* background-color: #D8E3E7; */
+  background-color: #5E8B7E;
+  color: white;
+
+  align-items: center;
+  -webkit-box-shadow: 0px -4px 15px -10px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px -4px 15px -10px rgba(0,0,0,0.75);
+box-shadow: 0px -4px 15px -10px rgba(0,0,0,0.75);
+}
+
+
+
+.footer-link a{
+  font-size: 20px;
+  color: white;
+}
+
+.footer-text{ 
+  font-size: 20px;
+
 }
